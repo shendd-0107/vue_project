@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li>span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #eee;
+        }
+
+        .active{
+            background: tomato;
+        }
+    </style>
+    <title>check</title>
+</head>
+
+<body>
+    <div id="container">
+        
+        <div class="main">
+            <li v-for='(item,index) in list' >
+                <span :class="{active:item.flag}" @click="clickFn(index)"></span>
+                <b>{{item.name}}</b>
+            </li>
+        </div>
+        <li>
+            <span :class="{active:allFlag}" @click="allFn"></span>
+            <b>全选</b>
+        </li>
+        
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+new Vue({
+    el:"#container",
+    data:{
+        allFlag:false,
+        list:[{
+            name:"苹果",
+            flag:false
+        },{
+            name:"香蕉",
+            flag:false
+        },{
+            name:"樱桃",
+            flag:false
+        }]
+    },
+    methods:{
+        clickFn(index){
+            this.list[index].flag = !this.list[index].flag;
+            this.allFlag = this.list.every(item=>item.flag);
+        },
+        allFn(){
+            this.allFlag = !this.allFlag;
+            this.list.forEach(item => { 
+                item.flag = this.allFlag;
+            });
+        }
+    }
+})
+</script>
+
+</html>

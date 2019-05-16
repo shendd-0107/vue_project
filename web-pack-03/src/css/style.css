@@ -1,0 +1,12 @@
+*{
+    margin:0;
+    padding:0;
+
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background: tomato;
+    /* background-image: url("../images/111.jpg"); */
+    background-size: 100% 100%;
+}

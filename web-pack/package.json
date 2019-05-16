@@ -1,0 +1,19 @@
+{
+  "name": "web-pack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.dev.js",
+  "scripts": {
+    "build": "webpack --config webpack.dev.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2"
+  }
+}

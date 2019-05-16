@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div class="title">
+            <span v-for="(item,index) in list" :class="{active:index==current}" @click="indexCurrent(index)">{{item.title}}</span>
+        </div>
+        <div class="cont">
+            <span v-for="(item,index) in list[current].cont">{{item}}</span>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el:"#container",
+        data:{
+            current:0,
+            list:[{
+                title:"1111",
+                cont:[111,111,111]
+            },{
+                title:"2222",
+                cont:[222,222,222]
+            },{
+                title:"3333",
+                cont:[333,333,333]
+            },{
+                title:"4444",
+                cont:[444,444,444]
+            }]
+        },
+        methods:{
+            indexCurrent(ind){
+                this.current = ind;
+            }
+        }
+    })
+</script>
+</html>

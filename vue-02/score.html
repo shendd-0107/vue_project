@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter</title>
+</head>
+<body>
+
+    <div id="app">
+        <button > 点击筛选</button>
+        <li v-for="(item,index) in score"><span>姓名:{{item.name}}</span>英语 :{{item.score[2]}}<span>不及格的有{{count}}个</span></li>
+        <li>
+            <input type="text" v-model="name">
+        </li>
+        <aaa></aaa>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    
+    Vue.component("aaa",{
+        template:`<li>{{title}}</li>`,
+        data(){
+            return {
+                title:"11111"
+            }
+        }
+    })
+    new Vue({
+        el:"#app",
+        data:{
+            title:"2222",
+            subject:["语文","数学","英语","体育"],
+            scores:[
+                {name:"jake",score:[100,90,90,90]},
+                {name:"jeny",score:[60,60,60,60]},
+                {name:"john",score:[50,50,50,50]},
+                {name:"danny",score:[80,80,80,80]},
+            ],
+            count:0,
+            name:"",
+            str:"1701C"
+        },
+        watch:{
+            name(news,old){
+                console.log(news,old)
+            }
+        },
+        computed:{
+            score(){
+                return this.scores.filter(item=>item.score[2]<60);
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>add+del</title>
+</head>
+<body>
+    <div id="app">
+        <h2>1701C班级</h2>
+        <li v-for="(item,index) in list">
+            <b>姓名：</b><span>{{item.name}}</span>
+            <b>性别：</b><span>{{item.sex}}</span>
+            <button class="show" @click="showFn(index)">详情</button>
+            <button class="del" @click="delFn(index)">删除</button>
+        </li>
+        <p>
+            <input type="text" v-model="name">
+            <select v-model="sex">
+                <option :value="item" v-for="(item,index) in sexArr">{{item}}</option>
+            </select>
+            <button type="btn" @click="sexFn">提交</button>
+        </p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            name:"",
+            sex:"男",
+            sexArr:["男","女"],
+            list:[]
+        },
+        methods:{
+            sexFn(){
+                this.list.push({name:this.name,sex:this.sex});
+            },
+            showFn(ind){
+                alert(`1701C班级'${this.list[ind].name}'小可爱~~,是个${this.list[ind].sex}孩子`)
+            },
+            delFn(ind){
+                this.list.splice(ind,1);
+            }
+        }
+    })
+</script>
+</html>

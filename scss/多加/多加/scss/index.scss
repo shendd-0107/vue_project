@@ -1,0 +1,151 @@
+@import "common.scss";
+@import "_mixin.scss";
+.wrapper {
+    height: 100%;
+    width: 100%;
+    @include box_flex;
+    @include direction(column);
+    background: #1D1D28;
+}
+
+header {
+    height: pxTorem(44px);
+    width: 100%;
+    background-image: linear-gradient(-135deg, #2CBB55 0%, #2CBB86 100%);
+    @include box_flex;
+    @include align;
+    padding: 0 pxTorem(14px) 0 pxTorem(15px);
+    box-sizing: border-box;
+    margin-bottom: pxTorem(15px);
+    >img {
+        height: pxTorem(21px);
+        width: pxTorem(40px);
+    }
+    div:nth-child(2) {
+        background: #fff;
+        margin: 0 pxTorem(10px);
+        @include flex;
+        height: pxTorem(30px);
+        border-radius: pxTorem(15px);
+        @include box_flex;
+        padding: 0 pxTorem(10.5px);
+        box-sizing: border-box;
+        @include align;
+        >img {
+            height: pxTorem(14px);
+            width: pxTorem(14px);
+            margin-right: pxTorem(10px);
+        }
+        input {
+            @include flex;
+        }
+    }
+    div:nth-child(3) {
+        font-size: pxTorem(14px);
+        color: #FFFFFF;
+        >img {
+            height: pxTorem(6px);
+            width: pxTorem(9px);
+            margin-left: pxTorem(7px);
+        }
+    }
+}
+
+section {
+    @include flex;
+    width: 100%;
+    overflow-y: auto;
+    .banner {
+        height: pxTorem(150px);
+        width: 100%;
+        padding: 0 pxTorem(30px);
+        @include sizing;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .contentIcon {
+        width: 100%;
+        @include box_flex;
+        @include flexWrap;
+        padding-bottom: pxTorem(15px);
+        @include sizing;
+        border-bottom: 1px solid #363645; // @include justify;
+        dl {
+            width: 25%;
+            @include box_flex;
+            @include direction(column);
+            @include align;
+            @include justify;
+            margin-top: pxTorem(12px);
+            dt {
+                margin-bottom: pxTorem(7px);
+                height: pxTorem(40px);
+                width: pxTorem(40px);
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            dd {
+                font-size: pxTorem(13px);
+                color: #FFFFFF;
+            }
+        }
+    }
+    .contentTitle {
+        width: 100%;
+        padding: pxTorem(15px);
+        @include sizing;
+        img {
+            height: pxTorem(15px);
+            width: pxTorem(4px);
+            margin-right: pxTorem(8px);
+        }
+        span {
+            font-size: pxTorem(15px);
+            color: #FFFFFF;
+        }
+    }
+    .contentScroll {
+        @include box_flex;
+        width: 100%;
+        overflow-x: auto;
+        padding-left: pxTorem(15px);
+        @include sizing;
+        li {
+            height: pxTorem(90px);
+            line-height: pxTorem(90px);
+            width: pxTorem(200px);
+            background: url(../img/国际@2x.png) no-repeat 0 0;
+            background-size: 100% 100%;
+            @include flex_shrink(0);
+            font-size: pxTorem(18px);
+            color: #FFFFFF;
+            text-align: center;
+        }
+    }
+}
+
+footer {
+    height: pxTorem(49px);
+    width: 100%;
+    background: #fff;
+    @include box_flex;
+    dl {
+        @include flex;
+        @include box_flex;
+        @include justify;
+        @include align;
+        img {
+            height: pxTorem(22px);
+            width: pxTorem(22px);
+        }
+        dd {
+            font-size: pxTorem(15px);
+            color: #363645;
+            margin-left: pxTorem(8px);
+        }
+    }
+}

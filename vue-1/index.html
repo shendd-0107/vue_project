@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #app{
+            width: 100px;
+            margin-left:20px;
+            /* margin:50px auto; */
+        }
+        .stop{
+            width: 200px;
+            height: 200px;
+            border:1px solid #ccc;
+        }
+        .red{
+            width: 100px;
+            height: 100px;
+            background: tomato;
+        }
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>{{param}}</h2>
+        <li class="box" v-text=text>
+            
+        </li>
+        <div v-html=cont></div>
+        <div class="stop" @click="console.log(111)">
+            <button v-on:click.self='flag=!flag'>{{click}}</button>
+            <div class="red" v-show=flag v-cloak>11</div>
+        </div>
+        <div class="mouse" @click.right.prevent="console.log(22)">鼠标右点击</div>
+        <a href="http://www.sina.com" @click.prevent>新浪</a>
+        <a :href="httpUrl">百度</a>
+        <div class="ipt">
+            <input type="text" placeholder="试试回车" @keyup.enter="number++">
+            <b>{{number}}</b>
+        </div>
+
+        <ul>
+            <li v-for="(item,index) in arr" >
+                <img :src="item.src" width="300" height="150" alt="">
+                <span v-text="item.name"></span>
+            </li>
+        </ul>
+
+        <p v-pre>{{notCode}}</p>
+        <p v-if>{{bool?bool:111}}</p>
+
+        <div>
+            <!-- <input type="text" :value="val" @input="val = $event.target.value"> -->
+            <input type="text" v-model="val">
+            <li>{{val}}</li>
+            
+        </div>
+        <dl>
+            <select v-model="sel">
+                <option :value="item" v-for="(item,index) in selArr">{{item}}</option>
+            </select>
+            <dd>{{sel}}</dd>
+        </dl>
+        <div>
+            <input type="text" :value="grade" v-model="grade">
+            <p v-if="grade >=90&&grade<=100">该生优秀</p>
+            <p v-else-if="grade >=80&&grade<90">该生良好</p>
+            <p v-else-if="grade >=60&&grade<80">该生及格</p>
+            <p v-else-if="grade <60">该生不及格</p>
+            <li v-else>请您输入在0-100之间</li>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            param:"hello world",
+            text:"我是好人",
+            cont:"<i>所以我开心</i>",
+            click:"点击",
+            flag:false,
+            number:0,
+            httpUrl:"http://baidu.com",
+            arr:[{
+                name:"111",
+                src:"./img/1.jpg",
+            },{
+                name:"222",
+                src:"./img/2.jpg",
+            }],
+            obj:{
+                name:"好人",
+                age:"19"
+            },
+            notCode:"不会编译",
+            bool:true,
+            val:"123",
+            sel:"17",
+            selArr:[17,18,19,20,21],
+            grade:90
+        }
+    })
+    vm.param = "world"
+</script>    
+
+</html>
